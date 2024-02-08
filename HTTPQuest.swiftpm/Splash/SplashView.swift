@@ -8,18 +8,38 @@
 import SwiftUI
 
 struct SplashView: View {
+    @Binding var tabSelection: Int
+    
     var body: some View {
-        VStack {
-            Text("Welcome to HTTPQuest!")
-                .font(.largeTitle)
-            
-            NavigationLink(destination: InternetView()) {
-                Text("Start Exploring")
+        
+        TabView {
+            VStack {
+                Text("Welcome to HTTPQuest!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                
+                Text("The internet works in truly mysterious and magical ways. Let's see how that happens.").fontWeight(.bold)
+                    .multilineTextAlignment(.leading).opacity(0.5)
+                
             }
+                .tabItem {
+                    Label("Welcome!", systemImage: "circle")
+                }
+                .tag(0)
+            
+            
+            AboutView()
+                .tabItem {
+                    Label("About this Project", systemImage: "circle")
+                }
+                .tag(1)
         }
+        .tabViewStyle(PageTabViewStyle())
+
+        
     }
 }
 
 #Preview {
-    SplashView()
+    SplashView(tabSelection: .constant(0))
 }

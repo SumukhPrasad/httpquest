@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct InternetView: View {
+struct GameView: View {
+    @Binding var tabSelection: Int
+    
     var body: some View {
-        Text("Hello, World! iv")
+        Text("Hello, World! gv")
     }
 }
 
 #Preview {
-    InternetView()
+    GameView(tabSelection: .constant(2))
 }

@@ -1,13 +1,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var currentTab = 0
+    
     var body: some View {
-        
-        TabView {
-            SplashView().tabItem { Label("Tab 1", systemImage: "circle") }
+
+        TabView(selection: $currentTab) {
+            SplashView(tabSelection: $currentTab).tabItem { Label("Hello!", systemImage: "circle") }.tag(0)
+            
+            LearnView(tabSelection: $currentTab).tabItem { Label("Learn", systemImage: "brain.fill") }.tag(1)
+            
+            GameView(tabSelection: $currentTab).tabItem { Label("Play", systemImage: "gamecontroller") }.tag(2)
+            
+            ConclusionView(tabSelection: $currentTab).tabItem { Label("CONCLUSION?", systemImage: "heart.circle") }.tag(3)
         }
-        
-        
         
     }
 }

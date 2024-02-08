@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ConclusionView: View {
+struct LearnView: View {
     @Binding var tabSelection: Int
     
     var body: some View {
-        Text("Hello, World! cv")
+        Text("Hello, World! iv")
     }
 }
 
 #Preview {
-    ConclusionView(tabSelection: .constant(3))
+    LearnView(tabSelection: .constant(1))
 }
