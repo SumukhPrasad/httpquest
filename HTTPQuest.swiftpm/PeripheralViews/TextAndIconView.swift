@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  TextAndIconView.swift
 //  
 //
 //  Created by Sumukh Prasad on 09/02/24.
