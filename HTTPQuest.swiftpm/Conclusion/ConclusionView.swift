@@ -36,14 +36,13 @@ struct ConclusionView: View {
             ScrollView {
                 VStack {
                     ConclusionContentView()
-                    
-                    TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                 }
                 .padding(20)
                 .frame(maxWidth: .infinity)
             }
             
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea(edges: .top)
     }
 }
 
