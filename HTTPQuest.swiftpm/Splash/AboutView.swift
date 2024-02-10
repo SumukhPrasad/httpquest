@@ -32,14 +32,16 @@ struct AboutView: View {
             .frame(width: UIScreen.main.bounds.width * 0.4)
             
             
-            VStack(alignment: .leading) {
-                AboutContentView()
-                
-                TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
-                Spacer()
+            ScrollView {
+                VStack(alignment: .leading) {
+                    AboutContentView()
+                    
+                    TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
+                    Spacer()
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity)
             }
-            .padding(20)
-            .frame(maxWidth: .infinity)
                         
         }.ignoresSafeArea()
     }
