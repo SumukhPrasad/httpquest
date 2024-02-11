@@ -12,7 +12,7 @@ struct ContentView: View {
             
             GameView(tabSelection: $currentTab).tabItem { Label("Play", systemImage: "gamecontroller") }.tag(2)
             
-            ConclusionView(tabSelection: $currentTab).tabItem { Label("CONCLUSION?", systemImage: "heart.circle") }.tag(3)
+            ConclusionView(tabSelection: $currentTab).tabItem { Label("Recap", systemImage: "heart.circle") }.tag(3)
         }.ignoresSafeArea()
         
     }
