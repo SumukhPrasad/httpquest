@@ -15,9 +15,20 @@ struct AboutView: View {
             ZStack(alignment: .leading) {
                 Color.yellow
                 
-                Image(systemName: "hand.wave.fill")
-                    .foregroundColor(Color.white)
-                    .opacity(0.5)
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "hand.wave.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.2)
+                            .foregroundColor(Color.white)
+                            .opacity(0.5)
+                        Spacer()
+                    }
+                    Spacer()
+                }
                 
                 VStack(alignment: .leading) {
                     Text("INTRODUCTION")

@@ -19,13 +19,12 @@ struct ConclusionView: View {
                     Text("RECAP")
                         .font(.headline)
                         .foregroundColor(Color.white)
-                        .opacity(0.5)
+                        .opacity(0.7)
                     
                     Text("Let's recap!")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(Color.white)
-                        .opacity(0.7)
                     Spacer()
                 }.padding(20)
             }
