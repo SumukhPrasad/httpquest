@@ -18,7 +18,12 @@ struct SplashView: View {
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                 
-                Text("The internet works in truly mysterious and magical ways. Let's see how that happens.").fontWeight(.bold).opacity(0.5)
+                Text("To most of us, the Internet is a virtual thing — we use it to talk with friends, to know more about the world, to share stories, to find inspiration: it has brought the world together in a way nothing before it could have. At an instant's notice, we have access to all the world's information. But have we taken the time to learn how this indispensable tool works?")
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .opacity(0.5)
+                    .padding(.horizontal, 50)
+                    .padding(.bottom, 50)
                 
                 TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
             }
@@ -41,7 +46,7 @@ struct SplashView: View {
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                 
-                Text("Ready to learn about how the internet works from the inside out?").fontWeight(.bold)
+                Text("Ready to learn about how the Internet works from the inside out?").fontWeight(.bold)
                     .multilineTextAlignment(.leading).opacity(0.5)
                 
                 Button(action: {tabSelection=1}, label: {

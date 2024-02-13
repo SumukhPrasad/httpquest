@@ -13,19 +13,22 @@ struct AboutView: View {
         HStack {
             
             ZStack(alignment: .leading) {
-                Color.red
+                Color.yellow
+                
+                Image(systemName: "hand.wave.fill")
+                    .foregroundColor(Color.white)
+                    .opacity(0.5)
                 
                 VStack(alignment: .leading) {
-                    Text("About this project")
+                    Text("INTRODUCTION")
                         .font(.headline)
                         .foregroundColor(Color.white)
-                        .opacity(0.5)
+                        .opacity(0.7)
                     
                     Text("Hey there!")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(Color.white)
-                        .opacity(0.7)
                     Spacer()
                 }.padding(20)
             }
@@ -40,6 +43,7 @@ struct AboutView: View {
                     Spacer()
                 }
                 .padding(20)
+                .padding(.bottom, 50)
                 .frame(maxWidth: .infinity)
             }
                         

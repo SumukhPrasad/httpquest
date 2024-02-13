@@ -36,7 +36,7 @@ struct LearnView: View {
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                 
-                Text("Ready to learn about how th internet works from the inside out?").fontWeight(.bold)
+                Text("Ready to learn about how the Internet works from the inside out?").fontWeight(.bold)
                     .multilineTextAlignment(.leading).opacity(0.5)
                 
                 Button(action: {tabSelection=2}, label: {
