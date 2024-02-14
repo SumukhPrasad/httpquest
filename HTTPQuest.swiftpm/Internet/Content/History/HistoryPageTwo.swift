@@ -14,5 +14,5 @@ struct HistoryPageTwo: View {
 }
 
 #Preview {
-    HistoryPageTwo()
+    HistoryView()
 }
