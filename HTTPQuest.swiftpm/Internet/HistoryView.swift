@@ -31,12 +31,13 @@ struct HistoryView: View {
             TabView {
                 
                 ScrollView {
-                    VStack {
+                    VStack(alignment: .leading) {
                         HistoryPageOne()
                         
                         TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                     }
                     .padding(20)
+                    .padding(.bottom, 50)
                     .frame(maxWidth: .infinity)
                 }
                     .tabItem {
@@ -46,12 +47,13 @@ struct HistoryView: View {
                 
                 
                 ScrollView {
-                    VStack {
+                    VStack(alignment: .leading) {
                         HistoryPageTwo()
                         
                         TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                     }
                     .padding(20)
+                    .padding(.bottom, 50)
                     .frame(maxWidth: .infinity)
                 }
                     .tabItem {
@@ -60,12 +62,13 @@ struct HistoryView: View {
                     .tag(1)
                 
                 ScrollView {
-                    VStack {
+                    VStack(alignment: .leading) {
                         HistoryPageThree()
                         
                         TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                     }
                     .padding(20)
+                    .padding(.bottom, 50)
                     .frame(maxWidth: .infinity)
                 }
                     .tabItem {
