@@ -50,14 +50,14 @@ struct AboutContentView: View {
         
         // -----
         
-        Text("Why should we know how the Internet works?")
+        /* Text("Why should we know how the Internet works?")
             .font(.largeTitle)
             .fontWeight(.bold)
             .padding(.top, 20.0)
         
         Text("When people and computers connect, the value of computing increases. The Internet has become a fundamental part of daily life. Knowing how it works helps us make the most of what it has to offer. It helps us engage responsibly with the world online.")
         
-        Text("Being digitally literate also helps us better protect ourselves from online threats. Understanding the potential risks on the Internet is crucial for personal cybersecurity.")
+        Text("Being digitally literate also helps us better protect ourselves from online threats. Understanding the potential risks on the Internet is crucial for personal cybersecurity.") */
         
         // -----
         
