@@ -12,13 +12,6 @@ struct LearnView: View {
     
     var body: some View {
         TabView {
-            
-            HistoryView()
-                .tabItem {
-                    Label("History", systemImage: "circle")
-                }
-                .tag(0)
-            
             WorkingsView()
                 .tabItem {
                     Label("Inner Workings", systemImage: "circle")
