@@ -12,6 +12,31 @@ struct LearnView: View {
     
     var body: some View {
         TabView {
+            VStack {
+                Text("Let's start learning!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                
+                Text("Imagine you've just sent a message to your friend. Let's travel with that message.")
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .opacity(0.5)
+                    .padding(.horizontal, 50)
+                
+                Image(systemName: "message.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.1)
+                    .foregroundColor(Color.teal)
+                    .padding(25)
+                
+                TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
+            }
+                .tabItem {
+                    Label("Let's learn!", systemImage: "circle")
+                }
+                .tag(0)
+            
             WorkingsView()
                 .tabItem {
                     Label("Inner Workings", systemImage: "circle")

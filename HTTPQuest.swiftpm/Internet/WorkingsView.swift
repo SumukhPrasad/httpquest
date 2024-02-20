@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct WorkingsView: View {
+    @State private var currentPage = 0
+    
     var body: some View {
         HStack {
             ZStack(alignment: .leading) {
-                Color.green
+                Color.teal
                 
                 VStack(alignment: .leading) {
-                    Text("HOW THE INTERNET WORKS")
+                    Text("HOW THE INTERNET WORKS • PAGE \(currentPage+1)")
                         .font(.headline)
                         .foregroundColor(Color.white)
                         .opacity(0.7)
@@ -28,7 +30,7 @@ struct WorkingsView: View {
             }
             .frame(width: UIScreen.main.bounds.width * 0.4)
             
-            TabView {
+            TabView(selection: $currentPage) {
                 
                 ScrollView {
                     VStack {

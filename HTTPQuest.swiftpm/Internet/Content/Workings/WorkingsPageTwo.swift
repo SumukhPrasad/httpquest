@@ -14,5 +14,5 @@ struct WorkingsPageTwo: View {
 }
 
 #Preview {
-    WorkingsPageTwo()
+    WorkingsView()
 }
