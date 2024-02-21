@@ -32,25 +32,27 @@ struct WorkingsView: View {
             
             TabView(selection: $currentPage) {
                 
-                ScrollView {
-                    VStack {
-                        WorkingsPageOne()
-                        
-                        TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
-                    }
-                    .padding(20)
-                    .frame(maxWidth: .infinity)
+                VStack {
+                    Spacer()
+                    WorkingsPageOne()
+                    
+                    Spacer()
+                    TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                 }
-                    .tabItem {
-                        Label("Page 1", systemImage: "circle")
-                    }
-                    .tag(0)
+                .padding(20)
+                .frame(maxWidth: .infinity)
+                .tabItem {
+                    Label("Page 1", systemImage: "circle")
+                }
+                .tag(0)
                 
                 
                 ScrollView {
                     VStack {
+                        Spacer()
                         WorkingsPageTwo()
                         
+                        Spacer()
                         TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                     }
                     .padding(20)
@@ -63,8 +65,10 @@ struct WorkingsView: View {
                 
                 ScrollView {
                     VStack {
+                        Spacer()
                         WorkingsPageThree()
                         
+                        Spacer()
                         TextAndIconView(text: "Slide to move forward", systemImage: "chevron.right", imagePosition: .right)
                     }
                     .padding(20)

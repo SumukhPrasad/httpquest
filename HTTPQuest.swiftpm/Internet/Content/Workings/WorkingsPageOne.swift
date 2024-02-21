@@ -9,7 +9,14 @@ import SwiftUI
 
 struct WorkingsPageOne: View {
     var body: some View {
-        Text("One")
+        // -----
+        
+        Text("Going on a journey ✈️")
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .padding(.top, 20.0)
+        
+        Text("The moment your message was sent, it starts on a hjourney around the world. ")
     }
 }
 
