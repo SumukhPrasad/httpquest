@@ -12,7 +12,7 @@ struct WorkingsView: View {
     private var titles = [
         "Messages to Packets",
         "Radio Magic",
-        "From your router to the internet",
+        "From your router to the Internet",
         "Around the world in 80 milliseconds",
         "A message has arrived!"
     ]
@@ -75,7 +75,7 @@ struct WorkingsView: View {
                         .fontWeight(.bold)
                         .padding(.top, 20.0)
                     
-                    Text("The message you sent is divided into small chunks called packets. Each packet is an envelope, with a **header** that tells the internet its send and receive address.")
+                    Text("The message you sent is divided into small chunks called packets. Each packet is an envelope, with a **header** that tells the Internet its send and receive address.")
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
                     
@@ -164,7 +164,7 @@ struct WorkingsView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
                     
-                    Text("Sometimes, the packets need to hitch a ride to the other side of the world. It’s quite simple, really, light goes in on one side of the ocean, and comes out on the other side of the ocean. These wires are what are called the internet backbones. These 400-odd cables form a web around the world and the \"Internet\" at large.")
+                    Text("Sometimes, the packets need to hitch a ride to the other side of the world. It’s quite simple, really, light goes in on one side of the ocean, and comes out on the other side of the ocean. These wires are what are called the Internet backbones. These 400-odd cables form a web around the world and the \"Internet\" at large.")
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
                     

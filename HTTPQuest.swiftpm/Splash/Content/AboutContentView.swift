@@ -34,7 +34,7 @@ struct AboutContentView: View {
                 VStack(alignment: .leading) {
                     Text("Learn").fontWeight(.bold)
                     
-                    Text("In this section, you'll learn about the history, the inner workings, and the current reach of the internet.")
+                    Text("In this section, you'll learn about the history, the inner workings, and the current reach of the Internet.")
                 }
             }
             

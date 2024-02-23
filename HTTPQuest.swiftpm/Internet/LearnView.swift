@@ -45,7 +45,7 @@ struct LearnView: View {
             
             VStack {
                 
-                Text("You've just learnt how the internet works!\nNext Step: Hands-on")
+                Text("You've just learnt how the Internet works!\nNext Step: Hands-on")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.center)
