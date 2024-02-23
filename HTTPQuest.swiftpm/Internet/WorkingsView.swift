@@ -9,23 +9,55 @@ import SwiftUI
 
 struct WorkingsView: View {
     @State private var currentPage = 0
+    private var titles = [
+        "Messages to Packets",
+        "Radio Magic",
+        "From your router to the internet",
+        "Around the world in 80 milliseconds",
+        "A message has arrived!"
+    ]
+    
+    private var images = [
+        "rectangle.split.3x3.fill",
+        "dot.radiowaves.left.and.right",
+        "cable.coaxial",
+        "network",
+        "envelope.badge.fill"
+    ]
     
     var body: some View {
         HStack {
             ZStack(alignment: .leading) {
                 Color.teal
                 
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: images[currentPage])
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.2)
+                            .foregroundColor(Color.white)
+                            .opacity(0.5)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                
                 VStack(alignment: .leading) {
                     Text("HOW THE INTERNET WORKS • PAGE \(currentPage+1)")
                         .font(.headline)
                         .foregroundColor(Color.white)
                         .opacity(0.7)
-                    
-                    Text("Hey there!")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.white)
                     Spacer()
+                    Divider()
+                        .frame(width: UIScreen.main.bounds.width * 0.2)
+                        .overlay(.white)
+                    Text(titles[currentPage])
+                        .font(.title)
+                        .fontWeight(.light)
+                        .foregroundColor(Color.white)
                 }.padding(20)
             }
             .frame(width: UIScreen.main.bounds.width * 0.4)
