@@ -43,16 +43,12 @@ struct LearnView: View {
                 }
                 .tag(1)
             
-            CurrentView()
-                .tabItem {
-                    Label("Current Conncetivity", systemImage: "circle")
-                }
-                .tag(2)
-            
             VStack {
-                Text("Next Step: Hands-on")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
+                
+                Text("You've just learnt how the internet works!\nNext Step: Hands-on")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .multilineTextAlignment(.center)
                 
                 Text("Ready to learn about how the Internet works from the inside out?").fontWeight(.bold)
                     .multilineTextAlignment(.leading).opacity(0.5)
@@ -68,7 +64,7 @@ struct LearnView: View {
                 .tabItem {
                     Label("Next Steps", systemImage: "circle")
                 }
-                .tag(3)
+                .tag(2)
         }
         .tabViewStyle(PageTabViewStyle())
         .onAppear() {
