@@ -49,10 +49,9 @@ struct GameView: View {
                 }).buttonStyle(.bordered)
                 .sheet(isPresented: $isInstructionSheetPresented) {
                     VStack {
-                        ScrollView {
-                                GameInstructionsView()
-                        }
-                        
+                        Spacer()
+                        GameInstructionsView()
+                        Spacer()
                         Button(action: {isInstructionSheetPresented=false}, label: {
                             HStack {
                                 Text("Play")
@@ -109,7 +108,7 @@ struct ScoreAnimationView: View {
             .padding()
             .background(Color.white)
             .cornerRadius(10)
-            .border(Color.green, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+            .border(Color.green, width: 1)
     }
 }
 

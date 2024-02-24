@@ -33,7 +33,7 @@ struct ConclusionView: View {
             
             
             ScrollView {
-                VStack {
+                VStack(alignment: .leading) {
                     ConclusionContentView()
                 }
                 .padding(20)

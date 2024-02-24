@@ -19,7 +19,7 @@ struct AboutContentView: View {
         
         Text("Hey there! I'm Sumukh Prasad, a student and self-taught developer. This project is about learning how the Internet works, and its aim is to educate people about how this indispensable tool that we use every single day works behind the scenes. The project has 3 sections —")
         
-        VStack {
+        VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 10) {
                 Text("•")
                 VStack(alignment: .leading) {
@@ -29,6 +29,7 @@ struct AboutContentView: View {
                 }
             }
             
+            
             HStack(alignment: .top, spacing: 10) {
                 Text("•")
                 VStack(alignment: .leading) {
@@ -37,6 +38,7 @@ struct AboutContentView: View {
                     Text("In this section, you'll learn about the inner workings of the Internet.")
                 }
             }
+            
             
             HStack(alignment: .top, spacing: 10) {
                 Text("•")

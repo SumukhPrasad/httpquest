@@ -14,7 +14,7 @@ struct ConclusionContentView: View {
             .fontWeight(.bold)
             .padding(.top, 20.0)
         
-        VStack {
+        VStack(alignment: .leading) {
             
             HStack(alignment: .top, spacing: 10) {
                 Text("•")
