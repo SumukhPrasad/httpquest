@@ -160,7 +160,7 @@ struct WorkingsView: View {
                         .fontWeight(.bold)
                         .padding(.top, 20.0)
                     
-                    Text("The wires off the back of your router travel to an Internet Hub, which figures out the fastest route for them to travel to where they need to be.")
+                    Text("The wires off the back of your router travel to an Internet Hub, which figures out the fastest route for them to travel to where they need to be. (You'll get to control your own packets in a network in the next section!)")
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
                     
