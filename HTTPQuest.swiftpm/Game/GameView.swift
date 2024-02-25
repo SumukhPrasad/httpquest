@@ -15,22 +15,56 @@ struct GameView: View {
     @State private var score: Int = 0
     
     @State private var showScoreAnimation: Bool = false
-    
-    
+
     @State private var scoreIntDivoHundred: Int = 0
-    
+    @State private var scoreIsReasonablyHigh: Bool = false
+    @State private var scoreMilestoneCardOpacity: Double = 0.0
+    @State private var scoreLimitDismissed: Bool = false
     var body: some View {
         
         VStack {
             
+            
+            Text("Score: **\(score)**")
+                .font(.title)
+            
+            Spacer()
+            
             ZStack {
                 Game(score: $score)
+                    .sheet(isPresented: $scoreIsReasonablyHigh) {
+                        VStack {
+                            Spacer()
+                            GameEndView()
+                            Spacer()
+                            HStack {
+                                Button(action: {scoreLimitDismissed=true; scoreIsReasonablyHigh=false}, label: {
+                                    HStack {
+                                        Text("Continue playing")
+                                        Image(systemName: "play.fill")
+                                    }
+                                }).buttonStyle(.bordered)
+                                Spacer()
+                                Button(action: {scoreLimitDismissed=true; scoreIsReasonablyHigh=false; tabSelection = 3}, label: {
+                                    HStack {
+                                        Text("Exit the game")
+                                        Image(systemName: "door.left.hand.open")
+                                    }
+                                }).buttonStyle(.borderedProminent)
+                            }
+                        }.padding(20)
+                    }
                 
                 if showScoreAnimation {
                     ScoreAnimationView()
+                        .opacity(scoreMilestoneCardOpacity)
                         .onAppear {
-                            // Hide the animation after it completes
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation {
+                                    scoreMilestoneCardOpacity = 0.0
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 showScoreAnimation = false
                             }
                         }
@@ -64,9 +98,6 @@ struct GameView: View {
                 
                 Spacer()
                 
-                Text("Score: **\(score)**")
-                Spacer()
-                
                 Button(action: {isExitSheetPresented=true}, label: {
                     HStack {
                         Text("Exit")
@@ -86,14 +117,19 @@ struct GameView: View {
         }
         .padding(20)
         .onChange(of: score) { newScore in
-            // Check for score milestones
             let newScoreIntDivoHundred = newScore / 100
-            print(newScoreIntDivoHundred)
+            
             if newScoreIntDivoHundred > scoreIntDivoHundred {
                 withAnimation {
                     showScoreAnimation = true
+                    scoreMilestoneCardOpacity = 1.0
                 }
             }
+            
+            if !scoreLimitDismissed {
+                scoreIsReasonablyHigh = (score > 250)
+            }
+            
             scoreIntDivoHundred = newScoreIntDivoHundred
         }
     }
@@ -101,14 +137,13 @@ struct GameView: View {
 
 struct ScoreAnimationView: View {
     var body: some View {
-        // Customize the animation view here
-        Text("Score Milestone Reached!")
-            .foregroundColor(.green)
+        Text("Good going!")
+            .foregroundColor(.white)
+            .fontWeight(.bold)
             .font(.headline)
             .padding()
-            .background(Color.white)
+            .background(Color.init(hue: 0.3, saturation: 0.8, brightness: 0.7))
             .cornerRadius(10)
-            .border(Color.green, width: 1)
     }
 }
 

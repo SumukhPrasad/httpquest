@@ -15,6 +15,21 @@ struct ConclusionView: View {
             ZStack(alignment: .leading) {
                 Color.yellow
                 
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "arrow.clockwise")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.2)
+                            .foregroundColor(Color.white)
+                            .opacity(0.5)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                
                 VStack(alignment: .leading) {
                     Text("RECAP")
                         .font(.headline)

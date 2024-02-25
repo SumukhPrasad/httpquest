@@ -12,14 +12,16 @@ class GameScene: SKScene {
     
     var packetNode: SKSpriteNode!
     var lastSpawnTime: TimeInterval = 0
-    let timeBetweenSpawns: TimeInterval = 3.0
+    let timeBetweenSpawns: TimeInterval = 2.0
     var selectedNode: SKNode?
     var originalPosition: CGPoint?
     var availableRouters: [String] = []
+    var lastInteractionTime: TimeInterval = 0
+    var inactivityTimer: Timer?
+    var logicIsRunning: Bool = false
     
     var score: Int = 0 {
         didSet {
-            print("Score updated: \(score)")
             scoreDidChange?(score)
         }
     }
@@ -32,20 +34,38 @@ class GameScene: SKScene {
         setupNetworkGrid()
         setupUI()
         startUpdateLogicSequence()
+        startInactivityTimer()
+    }
+    
+    func startInactivityTimer() {
+        inactivityTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] _ in
+            self?.handleInactivity()
+        }
+    }
+
+    func handleInactivity() {
+        // Handle inactivity (e.g., pause the game, show a message, etc.)
+        stopUpdateLogicSequence()
     }
     
     func startUpdateLogicSequence() {
-        let updateLogicAction = SKAction.sequence([
-            SKAction.run(updateLogic),
-            SKAction.wait(forDuration: 1.0 / 60.0)
-        ])
-        
-        let repeatForeverAction = SKAction.repeatForever(updateLogicAction)
-        self.run(repeatForeverAction, withKey: "updateLogic")
+        if !logicIsRunning {
+            let updateLogicAction = SKAction.sequence([
+                SKAction.run(updateLogic),
+                SKAction.wait(forDuration: 1.0 / 60.0)
+            ])
+            
+            let repeatForeverAction = SKAction.repeatForever(updateLogicAction)
+            self.run(repeatForeverAction, withKey: "updateLogic")
+        }
+        logicIsRunning = true
     }
 
     func stopUpdateLogicSequence() {
-        self.removeAction(forKey: "updateLogic")
+        if logicIsRunning {
+            self.removeAction(forKey: "updateLogic")
+        }
+        logicIsRunning = false
     }
     
     func setupNetworkGrid() {
@@ -54,8 +74,8 @@ class GameScene: SKScene {
         
         let screenSize = view?.bounds.size ?? CGSize(width: 400, height: 300)
         let nodeSize = CGSize(width: 40, height: 40)
-        let horizontalSpacing: CGFloat = 40
-        let verticalSpacing: CGFloat = 40
+        let horizontalSpacing: CGFloat = 60
+        let verticalSpacing: CGFloat = 60
         
         let maxNodesHorizontal = Int((screenSize.width - horizontalSpacing) / (nodeSize.width + horizontalSpacing))
         let maxNodesVertical = Int((screenSize.height - verticalSpacing) / (nodeSize.height + verticalSpacing))
@@ -91,22 +111,16 @@ class GameScene: SKScene {
         }
         
         if let randomNode = nodes.randomElement() {
-            let packet = PacketNode(label: "\(Int.random(in: 1..<10)).\(Int.random(in: 1..<10))")
+            let packet = PacketNode(label: "\(Int.random(in: 1..<6)).\(Int.random(in: 1..<10))")
             packet.size = CGSize(width: 32, height: 32)
-            packet.position = randomNode.position
+            packet.position = CGPoint(x: randomNode.position.x+(40)/2, y: randomNode.position.y+(40)/2)
             addChild(packet)
             
             let initialScaleAction = SKAction.scale(to: 0.1, duration: 0)
-            let scaleUpAction = SKAction.scale(to: 1.0, duration: 0.5)
+            let scaleUpAction = SKAction.scale(to: 1.0, duration: 0.2)
             scaleUpAction.timingMode = .easeOut
 
-            let waitAction = SKAction.wait(forDuration: 0.1)
-
-            let springAction = SKAction.customAction(withDuration: 0.3) { node, elapsedTime in
-               let fraction = elapsedTime / CGFloat(0.3)
-            }
-
-            packet.run(SKAction.sequence([initialScaleAction, SKAction.group([waitAction, scaleUpAction, springAction])]))
+            packet.run(SKAction.sequence([initialScaleAction, SKAction.group([scaleUpAction])]))
         }
     }
     
@@ -124,6 +138,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetInactivityTimer()
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
         
@@ -135,6 +150,7 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetInactivityTimer()
         guard let touch = touches.first, let selectedNode = selectedNode else { return }
         let touchLocation = touch.location(in: self)
         
@@ -146,6 +162,7 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetInactivityTimer()
         selectedNode?.alpha = 1.0
 
         guard let touch = touches.first, let selectedNode = selectedNode else { return }
@@ -203,5 +220,11 @@ class GameScene: SKScene {
         scoreIndicator.run(groupAction) {
             scoreIndicator.removeFromParent()
         }
+    }
+    
+    func resetInactivityTimer() {
+        inactivityTimer?.invalidate()
+        startInactivityTimer()
+        startUpdateLogicSequence()
     }
 }
